@@ -6,8 +6,11 @@ import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
 import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
+import { db } from "./_lib/prisma"
 
-export default function Home() {
+const Home = async () => {
+  const barbershops = await db.barberShop.findMany({})
+  console.log(barbershops)
   return (
     <div>
       <Header></Header>
@@ -15,14 +18,14 @@ export default function Home() {
         <h2 className="text-xl font-bold">Olá, Joaquim</h2>
         <p>Quinta-Feira, 12 de março</p>
 
-        <div className="mt-6 flex items-center gap-1">
+        <div className="mt-3 flex items-center gap-1">
           <Input className="my-4" placeholder="Faça sua busca" />
           <Button size="icon" className="bg-primary hover:bg-primary/90">
             <SearchIcon />
           </Button>
         </div>
 
-        <div className="relative mt-6 h-[150px] w-full overflow-hidden rounded-xl">
+        <div className="relative mt-3 h-[150px] w-full overflow-hidden rounded-xl">
           <Image
             src="/banner-01.svg"
             alt="FSW Barber"
@@ -30,8 +33,10 @@ export default function Home() {
             className="object-cover"
           />
         </div>
-
-        <Card className="mt-6 p-0">
+        <h2 className="mb-3 mt-3 text-xs font-bold uppercase text-gray-400">
+          Agendamentos
+        </h2>
+        <Card className="p-0">
           <CardContent className="flex items-stretch justify-between p-0">
             {/* Div da Esquerda */}
 
@@ -58,3 +63,4 @@ export default function Home() {
     </div>
   )
 }
+export default Home

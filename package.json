@@ -9,18 +9,16 @@
     "lint": "next lint",
     "prepare": "husky"
   },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
-  },
   "dependencies": {
-    "@prisma/adapter-pg": "^7.4.2",
-    "@prisma/client": "^7.4.2",
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^6.19.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
     "lucide-react": "^0.577.0",
     "next": "14.2.35",
     "pg": "^8.19.0",
+    "prisma": "^6.19.2",
     "radix-ui": "^1.4.3",
     "react": "^18",
     "react-dom": "^18",
@@ -39,7 +37,6 @@
     "postcss": "^8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "prisma": "^7.4.2",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"

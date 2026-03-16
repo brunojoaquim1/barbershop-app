@@ -1,4 +1,3 @@
-import { SearchIcon } from "lucide-react"
 import Header from "./_components/header"
 import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
@@ -8,9 +7,16 @@ import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
-
+import Footer from "./_components/footer"
+import BuscaRapida from "./_components/buscaRapida"
+import { SearchIcon } from "lucide-react"
 const Home = async () => {
   const barbershops = await db.barberShop.findMany({})
+  const popularBarbershops = await db.barberShop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
 
   return (
     <div>
@@ -24,6 +30,14 @@ const Home = async () => {
           <Button size="icon" className="bg-primary hover:bg-primary/90">
             <SearchIcon />
           </Button>
+        </div>
+
+        <div className="align-center flex overflow-auto py-4 [&::-webkit-scrollbar]:hidden">
+          <BuscaRapida imageSrc="/tesoura.svg" title="Cabelo" />
+          <BuscaRapida imageSrc="/navalha.svg" title="Barba" />
+          <BuscaRapida imageSrc="/mustache.svg" title="Acabamento" />
+          <BuscaRapida imageSrc="/footprints.svg" title="Pezinho" />
+          <BuscaRapida imageSrc="/eye.svg" title="Sobrancelha" />
         </div>
 
         <div className="relative mt-3 h-[150px] w-full overflow-hidden rounded-xl">
@@ -69,7 +83,17 @@ const Home = async () => {
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
+
+        <h2 className="mb-3 mt-3 text-xs font-bold uppercase text-gray-400">
+          Populares
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }

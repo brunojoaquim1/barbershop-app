@@ -1,12 +1,12 @@
 import Image from "next/image"
 import { Button } from "./ui/button"
 
-interface ServiceItemCardProps {
+interface QuickSearchItemProps {
   imageSrc: string
   title: string
 }
 
-const BuscaRapida = (props: ServiceItemCardProps) => {
+const BuscaRapida = (props: QuickSearchItemProps) => {
   return (
     <div className="px-1">
       <Button variant="secondary" className="px-5 py-4">

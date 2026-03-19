@@ -18,6 +18,34 @@ const Home = async () => {
     },
   })
 
+  interface QuickSearchItemProps {
+    imageSrc: string
+    title: string
+  }
+
+  const QuickSearchItem: QuickSearchItemProps[] = [
+    {
+      imageSrc: "/tesoura.svg",
+      title: "Cabelo",
+    },
+    {
+      imageSrc: "/navalha.svg",
+      title: "Barba",
+    },
+    {
+      imageSrc: "/mustache.svg",
+      title: "Acabamento",
+    },
+    {
+      imageSrc: "/footprints.svg",
+      title: "Pezinho",
+    },
+    {
+      imageSrc: "/eye.svg",
+      title: "Sobrancelha",
+    },
+  ]
+
   return (
     <div>
       <Header></Header>
@@ -33,6 +61,13 @@ const Home = async () => {
         </div>
 
         <div className="align-center flex overflow-auto py-4 [&::-webkit-scrollbar]:hidden">
+          {QuickSearchItem.map((item: QuickSearchItemProps) => (
+            <BuscaRapida
+              imageSrc={item.imageSrc}
+              title={item.title}
+              key={item.title}
+            />
+          ))}
           <BuscaRapida imageSrc="/tesoura.svg" title="Cabelo" />
           <BuscaRapida imageSrc="/navalha.svg" title="Barba" />
           <BuscaRapida imageSrc="/mustache.svg" title="Acabamento" />

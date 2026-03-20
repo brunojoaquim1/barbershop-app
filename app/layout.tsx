@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
+import { Toaster } from "sonner"
+import Footer from "./_components/footer"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${GeistMono.variable} antialiased`}>{children}</body>
+      <body className={`${GeistMono.variable} antialiased`}>
+        {children}
+        <Toaster />
+        <Footer />
+      </body>
     </html>
   )
 }

@@ -7,7 +7,6 @@ import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
-import Footer from "./_components/footer"
 import BuscaRapida from "./_components/buscaRapida"
 import { SearchIcon } from "lucide-react"
 const Home = async () => {
@@ -128,7 +127,6 @@ const Home = async () => {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

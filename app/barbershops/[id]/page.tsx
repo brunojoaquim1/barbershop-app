@@ -1,3 +1,4 @@
+import PhoneItemComponent from "@/app/_components/phone-item-component"
 import ServiceItem from "@/app/_components/service-item"
 import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
@@ -73,6 +74,13 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           <ServiceItem key={service.id} service={service} />
         ))}
       </div>
+
+      <h2 className="justify-between p-5 py-2 text-sm font-bold uppercase">
+        Contato
+      </h2>
+      {barbershop?.phones.map((phone) => (
+        <PhoneItemComponent key={phone} phone={phone} />
+      ))}
     </div>
   )
 }

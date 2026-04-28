@@ -9,7 +9,7 @@ import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import BuscaRapida from "./_components/buscaRapida"
 import { SearchIcon } from "lucide-react"
-import { QuickSearchItem, QuickSearchOptions } from "./types/search"
+import { quickSearchOptions } from "@/app/_constants/search"
 const Home = async () => {
   const barbershops = await db.barberShop.findMany({})
   const popularBarbershops = await db.barberShop.findMany({
@@ -33,9 +33,9 @@ const Home = async () => {
         </div>
 
         <div className="align-center flex overflow-auto py-4 [&::-webkit-scrollbar]:hidden">
-          {QuickSearchItem.map((item: QuickSearchOptions) => (
+          {quickSearchOptions.map((item) => (
             <BuscaRapida
-              imageSrc={item.imageSrc}
+              imageSrc={item.imageUrl}
               title={item.title}
               key={item.title}
             />

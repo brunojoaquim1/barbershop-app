@@ -16,24 +16,30 @@ import {
 import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import SignInDialog from "./sign-in-dialog"
+import { useEffect, useState } from "react"
 
 const SidebarSheet = () => {
   const { data } = useSession()
   const handleLogoutClick = () => signOut()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
-    <SheetContent className="overflow-y-auto">
-      <SheetHeader>
+    <SheetContent className="overflow-y-auto p-0">
+      {/* Header */}
+      <SheetHeader className="px-5 pb-0 pt-6">
         <SheetTitle className="text-left">Menu</SheetTitle>
       </SheetHeader>
 
-      <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
+      {/* User info */}
+      <div className="flex items-center justify-between gap-3 border-b border-solid px-5 py-4">
         {data?.user ? (
           <div className="flex items-center gap-2">
             <Avatar>
               <AvatarImage src={data?.user?.image ?? ""} />
             </Avatar>
-
             <div>
               <p className="font-bold">{data.user.name}</p>
               <p className="text-xs">{data.user.email}</p>
@@ -48,7 +54,7 @@ const SidebarSheet = () => {
                   <LogInIcon />
                 </Button>
               </DialogTrigger>
-              <DialogPortal container={document.body}>
+              <DialogPortal container={mounted ? document.body : undefined}>
                 <DialogOverlay />
                 <DialogContent className="w-[90%]">
                   <SignInDialog />
@@ -59,7 +65,8 @@ const SidebarSheet = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2 border-b border-solid py-5">
+      {/* Nav links */}
+      <div className="flex flex-col border-b border-solid px-2 py-3">
         <SheetClose asChild>
           <Button className="justify-start gap-2" variant="ghost" asChild>
             <Link href="/">
@@ -76,7 +83,8 @@ const SidebarSheet = () => {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-2 border-b border-solid py-5">
+      {/* Quick search */}
+      <div className="flex flex-col border-b border-solid px-2 py-3">
         {quickSearchOptions.map((option) => (
           <SheetClose key={option.title} asChild>
             <Button className="justify-start gap-2" variant="ghost" asChild>
@@ -94,11 +102,12 @@ const SidebarSheet = () => {
         ))}
       </div>
 
+      {/* Logout */}
       {data?.user && (
-        <div className="flex flex-col gap-2 py-5">
+        <div className="px-2 py-3">
           <Button
             variant="ghost"
-            className="justify-start gap-2"
+            className="w-full justify-start gap-2"
             onClick={handleLogoutClick}
           >
             <LogOutIcon size={18} />

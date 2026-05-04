@@ -1,6 +1,4 @@
 import Header from "./_components/header"
-import { Button } from "./_components/ui/button"
-import { Input } from "./_components/ui/input"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
 import { Badge } from "./_components/ui/badge"
@@ -8,8 +6,8 @@ import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import BuscaRapida from "./_components/buscaRapida"
-import { SearchIcon } from "lucide-react"
 import { quickSearchOptions } from "@/app/_constants/search"
+import Search from "./_components/search"
 const Home = async () => {
   const barbershops = await db.barberShop.findMany({})
   const popularBarbershops = await db.barberShop.findMany({
@@ -25,11 +23,8 @@ const Home = async () => {
         <h2 className="text-xl font-bold">Olá, Joaquim</h2>
         <p>Quinta-Feira, 12 de março</p>
 
-        <div className="mt-3 flex items-center gap-1">
-          <Input className="my-4" placeholder="Faça sua busca" />
-          <Button size="icon" className="bg-primary hover:bg-primary/90">
-            <SearchIcon />
-          </Button>
+        <div className="mt-6">
+          <Search></Search>
         </div>
 
         <div className="align-center flex overflow-auto py-4 [&::-webkit-scrollbar]:hidden">

@@ -4,9 +4,29 @@
 
 ---
 
+<!--
+========================================================
+GITHUB ABOUT — paste in the "Description" field:
+Full-stack barbershop booking app built with Next.js 14, TypeScript, Prisma and PostgreSQL. Features Google OAuth, appointment scheduling and conflict prevention.
+
+TOPICS — add one by one in the "Topics" field:
+nextjs typescript prisma postgresql nextauth tailwindcss shadcn booking-app full-stack
+========================================================
+-->
+
+---
+
 ## English
 
-A full-stack barbershop booking application built from scratch during a bootcamp — 100% hand-coded, without AI assistance — to consolidate React fundamentals and modern full-stack development practices.
+A full-stack barbershop booking application built from scratch during a bootcamp to consolidate React fundamentals and modern full-stack development practices.
+
+### Preview
+
+![Screens overview](docs/screenshots/screenshot1.png)
+
+![Booking flow](docs/screenshots/screenshot2.png)
+
+![Login flow](docs/screenshots/screenshot3.png)
 
 ### Features
 
@@ -75,7 +95,15 @@ npx prisma studio # Open Prisma GUI
 
 ## Português
 
-Uma aplicação full-stack de agendamento para barbearias, construída do zero durante um bootcamp — 100% na mão, sem uso de IA — com o objetivo de consolidar os fundamentos do React e as práticas modernas de desenvolvimento full-stack.
+Uma aplicação full-stack de agendamento para barbearias, construída do zero durante um bootcamp com o objetivo de consolidar os fundamentos do React e as práticas modernas de desenvolvimento full-stack.
+
+### Preview
+
+![Visão geral das telas](docs/screenshots/screenshot1.png)
+
+![Fluxo de agendamento](docs/screenshots/screenshot2.png)
+
+![Fluxo de login](docs/screenshots/screenshot3.png)
 
 ### Funcionalidades
 

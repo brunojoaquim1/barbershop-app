@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FSW Barber
 
-## Getting Started
+> 🇧🇷 [Leia em Português](#português) | 🇺🇸 [Read in English](#english)
 
-First, run the development server:
+---
+
+## English
+
+A full-stack barbershop booking application built from scratch during a bootcamp — 100% hand-coded, without AI assistance — to consolidate React fundamentals and modern full-stack development practices.
+
+### Features
+
+- Browse and search barbershops by name or service
+- View barbershop details, services, and pricing
+- Book appointments with date and time selection
+- Google OAuth authentication
+- Conflict prevention: already-booked time slots are hidden from the selector
+- Responsive mobile-first UI with dark mode
+
+### Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Database | PostgreSQL (Neon) |
+| ORM | Prisma |
+| Auth | NextAuth.js v4 — Google OAuth |
+| Styling | Tailwind CSS + shadcn/ui |
+| Forms | React Hook Form + Zod |
+| Notifications | Sonner |
+| Linting | ESLint + Prettier + Husky |
+
+### Getting Started
+
+**Prerequisites:** Node.js 18+, a PostgreSQL database (e.g. [Neon](https://neon.tech)), Google OAuth credentials.
+
+1. Clone the repository and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/fsw-barber.git
+cd fsw-barber
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create a `.env` file at the project root:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+DATABASE_URL=postgresql://...
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+NEXTAUTH_SECRET=...
+NEXTAUTH_URL=http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Push the database schema and start the dev server:
 
-## Learn More
+```bash
+npx prisma db push
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev       # Start development server
+npm run build     # Production build
+npm run lint      # ESLint check
+npx prisma studio # Open Prisma GUI
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Português
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Uma aplicação full-stack de agendamento para barbearias, construída do zero durante um bootcamp — 100% na mão, sem uso de IA — com o objetivo de consolidar os fundamentos do React e as práticas modernas de desenvolvimento full-stack.
+
+### Funcionalidades
+
+- Busca de barbearias por nome ou serviço
+- Visualização de detalhes, serviços e preços de cada barbearia
+- Agendamento com seleção de data e horário
+- Autenticação via Google OAuth
+- Prevenção de conflitos: horários já reservados são ocultados do seletor
+- Interface responsiva, mobile-first e com tema escuro
+
+### Stack
+
+| Camada | Tecnologia |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Linguagem | TypeScript |
+| Banco de dados | PostgreSQL (Neon) |
+| ORM | Prisma |
+| Autenticação | NextAuth.js v4 — Google OAuth |
+| Estilização | Tailwind CSS + shadcn/ui |
+| Formulários | React Hook Form + Zod |
+| Notificações | Sonner |
+| Qualidade de código | ESLint + Prettier + Husky |
+
+### Como rodar
+
+**Pré-requisitos:** Node.js 18+, banco PostgreSQL (ex.: [Neon](https://neon.tech)), credenciais do Google OAuth.
+
+1. Clone o repositório e instale as dependências:
+
+```bash
+git clone https://github.com/seu-usuario/fsw-barber.git
+cd fsw-barber
+npm install
+```
+
+2. Crie um arquivo `.env` na raiz do projeto:
+
+```env
+DATABASE_URL=postgresql://...
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+NEXTAUTH_SECRET=...
+NEXTAUTH_URL=http://localhost:3000
+```
+
+3. Suba o schema do banco e inicie o servidor:
+
+```bash
+npx prisma db push
+npm run dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000) no navegador.
+
+### Scripts
+
+```bash
+npm run dev       # Inicia o servidor de desenvolvimento
+npm run build     # Build de produção
+npm run lint      # Verificação com ESLint
+npx prisma studio # Abre a GUI do Prisma
+```

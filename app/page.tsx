@@ -1,13 +1,15 @@
 import Header from "./_components/header"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
+
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import BuscaRapida from "./_components/buscaRapida"
 import { quickSearchOptions } from "@/app/_constants/search"
 import Search from "./_components/search"
+import BookingItem from "./_components/booking-item"
+
+import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
+
 const Home = async () => {
   const barbershops = await db.barberShop.findMany({})
   const popularBarbershops = await db.barberShop.findMany({
@@ -15,6 +17,8 @@ const Home = async () => {
       name: "desc",
     },
   })
+
+  const confirmedBookings = await getConfirmedBookings()
 
   return (
     <div>
@@ -50,32 +54,23 @@ const Home = async () => {
             className="object-cover"
           />
         </div>
-        <h2 className="mb-3 mt-3 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
-        <Card className="p-0">
-          <CardContent className="flex items-stretch justify-between p-0">
-            {/* Div da Esquerda */}
 
-            <div className="flex flex-col p-4 px-5">
-              <Badge className="w-fit rounded-xl">Confirmado</Badge>
-              <h3 className="py-2 font-semibold">Corte de Cabelo</h3>{" "}
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src="https://utfs.io/f/c97a2dc9-cf62-468b-a851-bfd2bdde775f-16p.png"></AvatarImage>
-                </Avatar>
-                <p className="text-sm">Barbearia dos Guri</p>
-              </div>
+        {confirmedBookings.length > 0 && (
+          <div className="gap-2">
+            <h2 className="mb-3 mt-3 text-xs font-bold uppercase text-gray-400">
+              Agendamentos
+            </h2>
+            {/* AGENDAMENTO */}
+            <div className="flex gap-3 overflow-auto [&::-webkit-scrollbar]:hidden">
+              {confirmedBookings.map((booking) => (
+                <BookingItem
+                  key={booking.id}
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
+              ))}
             </div>
-
-            {/*Div da Direita*/}
-            <div className="flex flex-col items-center justify-center border-l  px-4">
-              <p className="text-sm">Março</p>
-              <p className="text-2xl">13</p>
-              <p className="text-sm">12:00</p>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        )}
 
         <h2 className="mb-3 mt-3 text-xs font-bold uppercase text-gray-400">
           Recomendados
